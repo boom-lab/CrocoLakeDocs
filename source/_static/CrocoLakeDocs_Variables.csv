@@ -1,0 +1,39 @@
+Variable name,Long name,Units,dtype,PHY,BGC
+DB_NAME,"Database name (e.g. Argo, GLODAP, etc.)",,string,,
+LATITUDE,Latitude,degree_north,float64,✅,✅
+LONGITUDE,Longitude,degree_east,float64,✅,✅
+PRES,Pressure,dbar,float32,✅,✅
+JULD,Timestamp,days since 1950-01-01 00:00:00 UTC,timestamp[ns],✅,✅
+TEMP,Temperature,degree_Celsius,float32,✅,✅
+PSAL,Practical salinity,psu,float32,✅,✅
+DOXY,Dissolved oxygen,micromole/kg,float32,✖️,✅
+BBP470,470nm particle backscattering,m-1,float32,✖️,✅
+BBP532,532nm particle backscattering,m-1,float32,✖️,✅
+BBP700,700nm particle backscattering,m-1,float32,✖️,✅
+TURBIDITY,Turbidity,ntu,float32,✖️,✅
+CP660,660nm particle beam attenuation,m-1,float32,✖️,✅
+CHLA,Chlorophyll-A,mg/m3,float32,✖️,✅
+CDOM,Concentration of coloured dissolved organic matter in sea water,ppb,float32,✖️,✅
+NITRATE,Nitrate NO3,micromole/kg,float32,✖️,✅
+BISULFIDE,Bisulfide,micromole/kg,float32,✖️,✅
+PH_IN_SITU_TOTAL,pH,dimensionless,float32,✖️,✅
+DOWN_IRRADIANCE380,380nm downwelling irradiance,W/m^2/nm,float32,✖️,✅
+DOWN_IRRADIANCE412,412nm downwelling irradiance,W/m^2/nm,float32,✖️,✅
+DOWN_IRRADIANCE443,443nm downwelling irradiance,W/m^2/nm,float32,✖️,✅
+DOWN_IRRADIANCE490,490nm downwelling irradiance,W/m^2/nm,float32,✖️,✅
+DOWN_IRRADIANCE555,555nm downwelling irradiance,W/m^2/nm,float32,✖️,✅
+UP_RADIANCE380,380nm upwelling radiance,W/m^2/nm,float32,✖️,✅
+UP_RADIANCE412,412nm upwelling radiance,W/m^2/nm,float32,✖️,✅
+UP_RADIANCE443,443nm upwelling radiance,W/m^2/nm,float32,✖️,✅
+UP_RADIANCE490,490nm upwelling radiance,W/m^2/nm,float32,✖️,✅
+UP_RADIANCE555,555nm upwelling radiance,W/m^2/nm,float32,✖️,✅
+DOWNWELLING_PAR,Downwelling photosynthetic available radiation,microMoleQuanta/m^2/sec,float32,✖️,✅
+CFC11,CFC-11 Trichlorofluoromethane,picomole/kg,float32,✖️,✅
+CFC12,CFC-12 Dichlorodifluoromethane,picomole/kg,float32,✖️,✅
+CFC113,CFC-113 trichlorotrifluoroethane,picomole/kg,float32,✖️,✅
+SILICATE,Silicate,micromole/kg,float32,✖️,✅
+PHOSPHATE,Phosphate,micromole/kg,float32,✖️,✅
+TCO2,TCO2 (dissolved inorganic carbon),micromole/kg,float32,✖️,✅
+TOT_ALKALINITY,Total alkalinity,micromole/kg,float32,✖️,✅
+CCL4,Carbon tetrachloride (CCl4),picomole/kg,float32,✖️,✅
+SF6,Sulfur hexafluoride (SF6),femtomole/kg,float32,✖️,✅
