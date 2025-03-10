@@ -1,3 +1,5 @@
+.. _available_datasets:
+
 Available datasets
 ==================
 
@@ -24,7 +26,7 @@ Argo's observations are refreshed weekly.
 GLODAP
 ------
 
-CrocoLake contains `GLODAP <https://glodap.info/>`_'s the core variables of the most recent data product v2.2023, which are already quality controlled. A description of the dataset is provided in `Lauvset et al (2024) <https://doi.org/10.5194/essd-16-2047-2024>`_.
+CrocoLake contains the core variables of `GLODAP <https://glodap.info/>`_'s most recent data product v2.2023, which are already quality controlled. A description of the dataset is provided in `Lauvset et al (2024) <https://doi.org/10.5194/essd-16-2047-2024>`_.
 
 The mapping between GLODAP's variables names and CrocoLake's is the following::
 
@@ -82,4 +84,4 @@ The mapping between Spray Glider data variables names and CrocoLake's is the fol
 
 All measurements' quality flags are assigned equal to 1.
 
-Spray Gliders data report depth and not pressure. For consistency with the CrocoLake variables, ``depth`` values are converted to pressure (and stored in ``PRES``) using the `Python implementation of the Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 <https://teos-10.github.io/GSW-Python/intro.html>`_ (specifically, its ``gsw.conversions.p_from_z()`` method).
+Spray Gliders data report depth and not pressure. For consistency with the :ref:`CrocoLake variables <crocolake_conventions>`, ``depth`` values are converted to pressure (and stored in ``PRES``) using the `Python implementation of the Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 <https://teos-10.github.io/GSW-Python/intro.html>`_ (specifically, its ``gsw.conversions.p_from_z()`` method).
