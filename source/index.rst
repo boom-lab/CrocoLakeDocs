@@ -6,9 +6,9 @@
 CrocoLake documentation
 =======================
 
-CrocoLake is a database of oceanographic observations that is developed and maintained within the framework of the NSF-sponsored project CROCODILE (CESM Regional Ocean and Carbon cOnfigurator with Data assimilation and Embedding).
+CrocoLake is a regularly refreshed and analysis-ready collection of global physical and biogeochemical oceanographic datasets. It is designed for fast, cloud-optimized access to sparse in-situ ocean observations from a growing number of ocean observing networks and initiatives (Argo, GLODAP, Spray gliders, Oleander XBT, SPOTS, etc.). The dataset is in a uniform tabular structure, with homogenized units and quality-control flags. It is stored in Apache Parquet format across multiple partitions for efficient subsetting. It can be accessed with any language that supports Parquet (e.g. Python, MATLAB, Julia). It also preserves profile information where the underlying datasets provide it.
 
-Its strength is to offer a uniform interface to a suite of oceanographic observations, which are all maintained in the same format (parquet), offering the user with the opportunity to retrieve and manipulate observations while remaining agnostic of their original data format, thus avoiding the extra-learning required to deal with multiple formats (netCDF, CSV, parquet, etc.) and merging different sources.
+CrocoLake is supported by the National Science Foundation under Grant No. 2311383, “Collaborative Research: Frameworks: A community platform for accelerating observationally-constrained regional oceanographic modeling”.
 
 .. toctree::
    :maxdepth: 2
