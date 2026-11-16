@@ -1,0 +1,15 @@
+{% extends "!layout.html" %}
+
+{%- block footer %}
+{{ super() }}
+<div class="footer-logos">
+  <a href="https://www.whoi.edu" target="_blank" rel="noopener" title="Woods Hole Oceanographic Institution">
+    <img class="whoi-logo" width="220" height="54" src="{{ pathto('_static/whoi_logo.svg', 1) }}"
+         alt="Woods Hole Oceanographic Institution">
+  </a>
+  <a href="https://www.nsf.gov" target="_blank" rel="noopener" title="U.S. National Science Foundation">
+    <img class="nsf-logo" width="80" height="80" src="{{ pathto('_static/nsf_logo.png', 1) }}"
+         alt="U.S. National Science Foundation">
+  </a>
+</div>
+{%- endblock %}

@@ -1,0 +1,43 @@
+/* Partner logos below the footer; aligned with the footer text column */
+div.footer-logos {
+    width: 940px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 30px auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+div.footer-logos img {
+    display: block;
+}
+
+div.footer-logos img.whoi-logo {
+    width: 220px;
+    max-width: 60vw;
+    height: auto;
+}
+
+div.footer-logos img.nsf-logo {
+    height: 80px;
+    width: auto;
+}
+
+@media screen and (max-width: 940px) {
+    div.footer-logos {
+        padding: 0 30px;
+        margin-top: 30px;
+        gap: 24px;
+    }
+
+    div.footer-logos img.whoi-logo {
+        width: 160px;
+    }
+
+    div.footer-logos img.nsf-logo {
+        height: 58px;
+    }
+}
