@@ -17,3 +17,4 @@ Its strength is to offer a uniform interface to a suite of oceanographic observa
    crocolake
    available_datasets
    tools
+   people
