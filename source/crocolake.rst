@@ -52,7 +52,7 @@ CrocoLake only contains quality-controlled measurements, allowing you to focus o
 
 Some notes:
 
-* The quality-control flag <PARAM>_QC generally carries on the 'good data' value from the original source; when missing in the original source, it is set to 1 if the source data is deemed good (bad data are discarded).
+* The quality-control flag <PARAM>_QC carries over the original source's flag (e.g. 1, 2, 5, or 8 for Argo; 2 for WOCE-flagged datasets such as GLODAP and SPOTS). When the original source has no flags, it is set to 1 if the source data is deemed good. Bad data are discarded.
 * For how quality-control is performed on each dataset, see :ref:`the dedicated page <available_datasets>`.
 * Not all measurements have error estimates <PARAM>_ERROR, even if they are deemed of good quality. In these cases, the corresponding <PARAM>_ERROR value is represented as missing.
 

@@ -159,3 +159,65 @@ The mapping between OleanderXBT variable names and CrocoLake's is the following:
     }
 
 The OleanderXBT dataset provides depth measurements directly, which are retained in CrocoLake as the ``DEPTH`` variable. For consistency with other datasets, these depth values are also converted to pressure (and stored in ``PRES``) using the `Python implementation of the Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 <https://teos-10.github.io/GSW-Python/intro.html>`_ (specifically, its ``gsw.conversions.p_from_z()`` method).
+
+SPOTS
+-----
+
+CrocoLake contains the ship-based biogeochemical time-series data from the `Synthesis Product for Ocean Time Series (SPOTS) <https://doi.org/10.5194/essd-16-1901-2024>`_, which compiles bottle and CTD observations collected at fixed time-series sites (e.g. ALOHA, CARIACO, K2, Irminger Sea, Iceland Sea). A description of the dataset is provided in `Lange et al. (2024) <https://doi.org/10.5194/essd-16-1901-2024>`_. SPOTS data are included in both the PHY and BGC versions of CrocoLake.
+
+The mapping between SPOTS variable names and CrocoLake's is the following:
+
+.. list-table::
+   :header-rows: 1
+
+   * - SPOTS variable
+     - CrocoLake variable
+     - Notes
+   * - ``TimeSeriesSite``
+     - ``PLATFORM_NUMBER``
+     - Name of the time-series site
+   * - ``LATITUDE``, ``LONGITUDE``
+     - ``LATITUDE``, ``LONGITUDE``
+     -
+   * - ``DATE`` + ``TIME``
+     - ``JULD``
+     - ``DATE`` (YYYYMMDD) and ``TIME`` (HHMM, UTC) are combined; a missing ``TIME`` is set to 00:00
+   * - ``CTDPRS``
+     - ``PRES``
+     -
+   * - ``CTDTMP``
+     - ``TEMP``
+     -
+   * - ``SALNTY``, or ``CTDSAL`` if ``SALNTY`` is missing
+     - ``PSAL``
+     - Bottle salinity is preferred; CTD salinity is used where bottle salinity is missing. ``PSAL_QC`` and ``PSAL_ERROR`` come from the same source as ``PSAL``
+   * - ``OXYGEN``
+     - ``DOXY``
+     - Bottle oxygen
+   * - ``NITRAT``
+     - ``NITRATE``
+     -
+   * - ``SILCAT``
+     - ``SILICATE``
+     -
+   * - ``PHSPHT``
+     - ``PHOSPHATE``
+     -
+   * - ``ALKALI``
+     - ``TOT_ALKALINITY``
+     -
+   * - ``PH_TOT``
+     - ``PH_IN_SITU_TOTAL``
+     -
+   * - ``<PARAM>_FLAG_W``
+     - ``<PARAM>_QC``
+     - Original WOCE flag; only flag 2 is kept
+   * - ``<PARAM>_A`` or ``<PARAM>_P``
+     - ``<PARAM>_ERROR``
+     - Accuracy if available, otherwise precision
+
+Quality control: SPOTS reports WOCE quality flags (``<PARAM>_FLAG_W``). CrocoLake carries over these flags unchanged into ``<PARAM>_QC``. Measurements whose flag is not 2 ("acceptable") are discarded, so all retained ``<PARAM>_QC`` values are 2. SPOTS fill values are dropped.
+
+CrocoLake assigns ``CYCLE_NUMBER`` by numbering each unique cast (``TimeSeriesSite``, ``CRUISE``, ``STNNBR``, ``CASTNO``) sequentially within each site. These numbers are not guaranteed to be stable across SPOTS releases.
+
+``DATE_UPDATE`` is set to the SPOTS release date (2024-02-22).
