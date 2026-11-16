@@ -26,7 +26,7 @@ Argo's observations are refreshed weekly.
 GLODAP
 ------
 
-CrocoLake contains the core variables of `GLODAP <https://glodap.info/>`_'s most recent data product v2.2023, which are already quality controlled. A description of the dataset is provided in `Lauvset et al (2024) <https://doi.org/10.5194/essd-16-2047-2024>`_.
+CrocoLake contains the core variables of `GLODAP <https://glodap.info/>`_'s most recent data product (`GLODAPv3 <https://glodap.info/index.php/merged-and-adjusted-data-product-v3/>`_), which are already quality controlled. A description of the dataset is provided in `Lauvset et al (2024) <https://doi.org/10.5194/essd-16-2047-2024>`_.
 
 The mapping between GLODAP's variables names and CrocoLake's is the following::
 
