@@ -13,11 +13,27 @@ Argo
 * physical observations are extracted from the core profile files (i.e. <PLATFORM_NUMBER>_prof.nc files);
 * biogeochemical observations are extracted from the synthetic profile files (i.e. <PLATFORM_NUMBER>_Sprof.nc files).
 
-For each observed parameter <PARAM>, Argo's profiles report both real time (<PARAM>, <PARAM>_QC), and adjusted (<PARAM>_ADJUSTED, <PARAM>_ADJUSTED_QC, and <PARAM>_ADJUSTED_ERROR) variables. CrocoLake keeps the best measurement available, i.e. CrocoLake's <PARAM>, <PARAM>_QC and <PARAM>_ERROR are assigned the values
+For each observed parameter <PARAM>, Argo's profiles report both real-time (<PARAM>, <PARAM>_QC) and adjusted (<PARAM>_ADJUSTED, <PARAM>_ADJUSTED_QC, <PARAM>_ADJUSTED_ERROR) variables. CrocoLake keeps the best measurement available at each point, filling <PARAM>, <PARAM>_QC, and <PARAM>_ERROR as follows:
 
-* <PARAM>_ADJUSTED, <PARAM>_ADJUSTED_QC, and <PARAM>_ADJUSTED_ERROR, if <PARAM>_ADJUSTED_QC is in [1,2,5,8] and <PARAM>_DATA_MODE is in ['A','D'];
-* <PARAM>, <PARAM>_QC, and pd.NA, if <PARAM>_ADJUSTED_QC is not in [1,2,5,8], <PARAM>_DATA_MODE is 'R', and <PARAM>_QC is in [1,2,5,8];
-* pd.NA otherwise.
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * - Data mode
+     - Kept if
+     - Values taken from
+   * - A or D
+     - adjusted QC is in [1, 2, 5, 8]
+     - adjusted variables
+   * - R
+     - real-time QC is in [1, 2, 5, 8] and <PARAM> is TEMP or PSAL
+     - real-time variables (no error)
+
+All other values are discarded, including R-mode BGC variables.
+
+The data mode is DATA_MODE in the PHY version (one per row) and <PARAM>_DATA_MODE in the BGC version (one per variable).
+
+Observations whose POSITION_QC and JULD_QC are not in [1,2,5,8] are discarded.
 
 This allows to keep the best value available at each location. For best practices for scientific analysis, Argo's guidelines are `here <https://argo.ucsd.edu/data/how-to-use-argo-files/>`_ and `also here <https://argo.ucsd.edu/data/data-faq/>`_.
 
