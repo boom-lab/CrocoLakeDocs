@@ -28,61 +28,106 @@ GLODAP
 
 CrocoLake contains the core variables of `GLODAP <https://glodap.info/>`_'s most recent data product (`GLODAPv3 <https://glodap.info/index.php/merged-and-adjusted-data-product-v3/>`_), which are already quality controlled. A description of the dataset is provided in `Lauvset et al (2024) <https://doi.org/10.5194/essd-16-2047-2024>`_.
 
-The mapping between GLODAP's variables names and CrocoLake's is the following::
+The mapping between GLODAP's variables names and CrocoLake's is the following:
 
-    params["GLODAP2CROCOLAKE"] = {
-        'G2expocode' : 'PLATFORM_NUMBER',
-        'G2latitude' : 'LATITUDE',
-        'G2longitude' : 'LONGITUDE',
-        'G2pressure' : 'PRES',
-        'G2temperature' : 'TEMP',
-        'G2salinity' : 'PSAL',
-        'G2oxygen' : 'DOXY',
-        'G2nitrate' : 'NITRATE',
-        'G2silicate' : 'SILICATE',
-        'G2phosphate' : 'PHOSPHATE',
-        'G2tco2' : 'TCO2',
-        'G2talk' : 'TOT_ALKALINITY',
-        'G2phtsinsitutp' : 'PH_IN_SITU_TOTAL',
-        'G2cfc11' : 'CFC11',
-        'G2cfc12' : 'CFC12',
-        'G2cfc113' : 'CFC113',
-        'G2ccl4' : 'CCL4',
-        'G2sf6' : 'SF6',
-        'G2chla' : 'CHLA',
-        'G2salinityf' : 'PSAL_QC',
-        'G2oxygenf' : 'DOXY_QC',
-        'G2nitratef' : 'NITRATE_QC',
-        'G2silicatef' : 'SILICATE_QC',
-        'G2phosphatef' : 'PHOSPHATE_QC',
-        'G2tco2f' : 'TCO2_QC',
-        'G2talkf' : 'TOT_ALKALINITY_QC',
-        'G2phtsinsitutpf' : 'PH_IN_SITU_TOTAL_QC',
-        'G2cfc11f' : 'CFC11_QC',
-        'G2cfc12f' : 'CFC12_QC',
-        'G2cfc113f' : 'CFC113_QC',
-        'G2ccl4f' : 'CCL4_QC',
-        'G2sf6f' : 'SF6_QC',
-        'G2chlaf' : 'CHLA_QC',
-    }
+.. list-table::
+   :header-rows: 1
+
+   * - GLODAP variable
+     - CrocoLake variable
+     - Notes
+   * - ``expocode``
+     - ``PLATFORM_NUMBER``
+     - Cruise expocode
+   * - ``year``, ``month``, ``day``, ``hour``, ``minute``
+     - ``JULD``
+     - Combined into a single timestamp
+   * - ``latitude``, ``longitude``
+     - ``LATITUDE``, ``LONGITUDE``
+     -
+   * - ``pressure``
+     - ``PRES``
+     - No QC flag in GLODAP; fill values (-9999) are discarded, and rows without pressure are dropped
+   * - ``temperature``
+     - ``TEMP``
+     - No QC flag in GLODAP; fill values (-9999) are discarded
+   * - ``salinity``
+     - ``PSAL``
+     -
+   * - ``oxygen``
+     - ``DOXY``
+     -
+   * - ``nitrate``
+     - ``NITRATE``
+     -
+   * - ``silicate``
+     - ``SILICATE``
+     -
+   * - ``phosphate``
+     - ``PHOSPHATE``
+     -
+   * - ``tco2``
+     - ``TCO2``
+     -
+   * - ``talk``
+     - ``TOT_ALKALINITY``
+     -
+   * - ``phtsinsitutp``
+     - ``PH_IN_SITU_TOTAL``
+     -
+   * - ``cfc11``, ``cfc12``, ``cfc113``
+     - ``CFC11``, ``CFC12``, ``CFC113``
+     -
+   * - ``ccl4``, ``sf6``
+     - ``CCL4``, ``SF6``
+     -
+   * - ``chla``
+     - ``CHLA``
+     -
+   * - ``<param>f``
+     - ``<PARAM>_QC``
+     - Original GLODAP flag; only flags 0 and 2 are kept
 
 Spray Gliders
 -------------
 
 CrocoLake contains `Spray Glider <https://spraydata.ucsd.edu/>`_ data `Level 3 <https://spraydata.ucsd.edu/data-access>`_, which are already quality controlled.
 
-The mapping between Spray Glider data variables names and CrocoLake's is the following::
+The mapping between Spray Glider data variables names and CrocoLake's is the following:
 
-    params["SprayGliders2CROCOLAKE"] = {
-        'mission_name' : 'PLATFORM_NUMBER',
-        'lat' : 'LATITUDE',
-        'lon' : 'LONGITUDE',
-        'temperature' : 'TEMP',
-        'salinity' : 'PSAL',
-        'time': 'JULD',
-    }
+.. list-table::
+   :header-rows: 1
 
-All measurements' quality flags are assigned equal to 1.
+   * - Spray Gliders variable
+     - CrocoLake variable
+     - Notes
+   * - ``mission_name``
+     - ``PLATFORM_NUMBER``
+     - Mission name
+   * - ``profile``
+     - ``CYCLE_NUMBER``
+     -
+   * - ``lat``, ``lon``
+     - ``LATITUDE``, ``LONGITUDE``
+     -
+   * - ``time``
+     - ``JULD``
+     -
+   * - ``depth``
+     - ``DEPTH``, ``PRES``
+     - Depth is kept and also converted to pressure (see below)
+   * - ``temperature`` or ``temp``
+     - ``TEMP``
+     - Variable name differs between files
+   * - ``salinity`` or ``sal``
+     - ``PSAL``
+     - Variable name differs between files
+   * - ``chlorophyll_a``
+     - ``CHLA``
+     - 
+   * - ``doxy``
+     - ``DOXY``
+     - 
 
 Spray Gliders data report depth and not pressure. For consistency with the :ref:`CrocoLake variables <crocolake_conventions>`, ``depth`` values are converted to pressure (and stored in ``PRES``) using the `Python implementation of the Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 <https://teos-10.github.io/GSW-Python/intro.html>`_ (specifically, its ``gsw.conversions.p_from_z()`` method).
 
@@ -146,17 +191,32 @@ OleanderXBT
 
 CrocoLake contains data from the `OleanderXBT project <http://erddap.oleander.bios.edu:8080/erddap/files/oleanderXbtNcFiles/>`_, which collects oceanographic temperature observations along the shipping route between New Jersey and Bermuda. The data contains yearly archives of temperature profile data from 1977 to present.
 
-The mapping between OleanderXBT variable names and CrocoLake's is the following::
+The mapping between OleanderXBT variable names and CrocoLake's is the following:
 
-    params["Oleander2CROCOLAKE"] = {
-        'trajectory' : 'PLATFORM_NUMBER',
-        'profile' : 'CYCLE_NUMBER',
-        'latitude' : 'LATITUDE',
-        'longitude' : 'LONGITUDE',
-        'time' : 'JULD',
-        'depth' : 'DEPTH',
-        'temp' : 'TEMP',
-    }
+.. list-table::
+   :header-rows: 1
+
+   * - OleanderXBT variable
+     - CrocoLake variable
+     - Notes
+   * - ``trajectory``
+     - ``PLATFORM_NUMBER``
+     -
+   * - ``profile``
+     - ``CYCLE_NUMBER``
+     -
+   * - ``latitude``, ``longitude``
+     - ``LATITUDE``, ``LONGITUDE``
+     -
+   * - ``time``
+     - ``JULD``
+     -
+   * - ``depth``
+     - ``DEPTH``, ``PRES``
+     - Depth is kept and also converted to pressure (see below)
+   * - ``temp``
+     - ``TEMP``
+     -
 
 The OleanderXBT dataset provides depth measurements directly, which are retained in CrocoLake as the ``DEPTH`` variable. For consistency with other datasets, these depth values are also converted to pressure (and stored in ``PRES``) using the `Python implementation of the Gibbs SeaWater (GSW) Oceanographic Toolbox of TEOS-10 <https://teos-10.github.io/GSW-Python/intro.html>`_ (specifically, its ``gsw.conversions.p_from_z()`` method).
 
