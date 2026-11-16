@@ -13,12 +13,12 @@ Download links
 
 CrocoLake is refreshed every weekend. You can download the most recent versions at these links:
 
-* `CrocoLake-PHY <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/ETVsmC-RKnlIpH_cWf1fSHcBCfeAPGT9QOCv7Qxxrbt4Mg?e=3ihaW7&download=1>`_ (for all tools except Matlab; approx. 17 GB)
-* `CrocoLake-BGC <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/EYu01zZNqjJLi9ep8eM3SNwBAG98weAgQWqlmNbYeuncRg?e=ie04C4&download=1>`_ (for all tools except Matlab; approx. 6 GB)
-* `CrocoLake-PHY <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/EZ5RMKSI1pVLoLamkiW4Jv0BKQv7T4ql2PKFiVm5ERHjow?e=4mAN9T&download=1>`_ (for Matlab; approx. 17 GB; Matlab)
-* `CrocoLake-BGC <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/EfrMqtCBPW9Gnwlqp0CC42oBCCx8UG88_6LfXcWbDLyiNQ?e=NUoQQd&download=1>`_ (for Matlab; approx. 6 GB)
+* `CrocoLake-PHY <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/IQDq9IvhvTxhRKkBRJXePgv7Aa4_HFGUxoIFiyE17wy3pzA?e=RaEVc7&download=1>`_ (approx. 19 GB)
+* `CrocoLake-BGC <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/IQC2iSTeq9BBS64act2e6XmFAVq97kMYNDEs1QQWZ5yYEHo?e=MngvtE&download=1>`_ (approx. 7 GB)
 
-The Matlab version is identical to the other versions, except a few metadata files are removed as they are incompatible with Matlab's parser.
+Some softwares (e.g. earlier versions of Matlab) cannot parse all the storage-metadata at the links above and fail; if you encounter that issue, try downloading these:
+* `CrocoLake-PHY <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/IQBevTxDjDisT4ALvPp4RgF2Adog8oRwfGtL15e1j9VrxnI?e=BGrlaX&download=1>`_ (approx. 19 GB)
+* `CrocoLake-BGC <https://whoi-my.sharepoint.com/:u:/g/personal/enrico_milanese_whoi_edu/IQAw9Zl4yZomTJk5XY29whWVAY2ObAnriNk5pvGKZtOuWCU?e=yhmrng&download=1>`_ (approx. 7 GB)
 
 .. _crocolake_conventions:
 
